@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String</title>
+</head>
+
+<body>
+    <script>
+        /* ## tring
+        ● Tipe data String sudah kita bahas pada materi JavaScript Dasar
+        ● Namun kita belum membahas instance method atau juga instance properties yang terdapat di String
+        ● https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+
+        ## String Instance Method dan Properties
+        ● String sendiri memiliki banyak sekali instance method dan properties
+        ● Hal ini menjadikan untuk memanipulasi data String sangat mudah di JavaScript, seperti mengubah menjadi lowercase, UPPERCASE, memotong string menjadi array dan lain-lain
+        ● https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#instance_methods
+        */
+
+        // Kode : String Instance Method dan Properties
+        let name = "Fauzan Ahmad Margonda";
+        console.info(name.length);
+        console.info(name.toLowerCase());
+        console.info(name.toUpperCase());
+        console.info(name.split(" "));
+        console.info(name.charAt(3));
+        console.info(name.includes("zan"));// search apakah ada zan didalamnya
+        name = "    Fauzan Ahmad Margonda    ";
+        console.info(name.trim());
+    </script>
+</body>
+
+</html>
