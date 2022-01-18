@@ -10,141 +10,37 @@
 
 <body>
     <script>
-        /* Array
-        ● Tipe data Array sudah kita bahas di materi JavaScript Dasar
-        ● Namun kita hanya membahas beberapa instance method yang ada di Array
-        ● Sebenarnya, terdapat banyak sekali Instance Method yang ada di Array, dan kita akan coba bahas beberapa di sini
-        ● https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+        /*
+        ## Object
+        ● Tipe data object sudah sering sekali kita bahas di JavaScript Dasar dan JavaScript OOP
+        ● Pada materi ini, kita akan bahas banyak static method yang terdapat pada Object
+        ● https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-        ## Array Loop
-        ● Sebelumnya kita biasa menggunakan for in dan for of untuk melakukan iterasi Array, namun Array juga memiliki method yang bernama forEach()
-        ● Method forEach bisa digunakan juga untuk melakukan iterasi data array
+        ## Object Freeze & Seal
+        ● Secara default, object bisa diubah atau dihapus properties nya
+        ● Jika kita ingin mengubah sebuah object menjadi object yang tidak bisa diubah atau dihapus, kita bisa menggunakan beberapa static method
+        ● Object.freeze() digunakan untuk mengubah object menjadi object yang tidak bisa diubah atau dihapus attribute nya
+        ● Object.seal() digunakan untuk mengubah object menjadi object yang tidak bisa dihapus attribute nya
 
-        ## Array Queue
-        ● Dalam struktur data, terdapat tipe struktur data bernama Queue (Antrian)
-        ● Dimana data masuk akan diposisikan di urutan paling belakang
-        ● Sedangkan data keluar akan diposisikan dari urutan paling depan
-        ● Mirip sekali dengan antrian, atau istilahnya FIFO (first in first out)
-        ● Kita bisa menggunakan Array dengan bantuan function push() untuk menambah data di belakang, dan shift() untuk mengambil dan menghapus data paling depan
-
-        ## Array Stack
-        ● Struktur data Stack (Tumpukan) kebalikan dari Queue, dimana aturannya mirip dengan tumpukan kartu
-        ● Saat kita memasukkan data, kita akan memasukkan di urutan paling belakang (atau atas)
-        ● Sedangkan saat kita mengambil data, kita akan mengambil data dari paling belakang (atau atas) terlebih dahulu
-        ● Stack ini sifatnya LIFO (last in first out)
-        ● Untuk menambah diurutan belakang, kita bisa menggunakan function push()
-        ● Dan untuk mengambil dan menghapus paling belakang, kita bisa menggunakan function pop()
-
-        ## Array Search
-        Array memiliki banyak function untuk melakukan pencarian :
-        Function                               | Keterangan
-        find(value => boolean) : value         | Mencari data sesuai dengan kondisi
-        findIndex(value => boolean) : number   | Mencari data index sesuai dengan kondisi
-        includes(value) : boolean              | Mengecek apakah terdapat data
-        indexOf(value) : number                | Mengecek posisi index data
-        lastIndexOf(value) : number            | Mengecek posisi index data terakhir
-
-        ## Array Filter
-        Array memiliki function untuk melakukan filter data
-        Function                            Keterangan
-        filter(value => boolean) : Array    Melakukan filter data yang kondisinya bernilai true
-
-        ## Array Transform
-        Array juga memiliki function yang digunakan untuk melakukan transformasi
-        Function || Keterangan
-        • map(value => result) : Array<result> || Melakukan transform tiap value dan menghasilkan array result
-        • reduce(resultBefore, value => result) : result || Melakukan transform dengan menggunakan value array dan value selanjutnya, lalu hasilnya dilanjutkan ke iterasi selanjutnya
-        • reduceRight(resultBefore, value => result) || Sama seperti reduce(), namun dilakukan dari belakang
-
-        ## Dan Function lain-lain
-        ● https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#instance_methods
+        ## Object Assign
+        ● Kadang kita ada kasus menggabungkan semua attribute dari sebuah object ke object lain
+        ● Hal ini bisa kita lakukan dengan menggunakan Object.assign(target, source)
         */
 
-        // data set
-        const array = ["Fauzan", "Ahmad", "Margono"];
-        const object = {
-            0: {
-                fullname: "Fauzan Ahmad",
-                gender: "laki-laki",
-                city: "yogyakarta"
-            },
-            1: {
-                fullname: "roy Ahmad",
-                gender: "laki-laki",
-                city: "yogyakarta"
-            },
+
+
+        // Kode : Object Freeze
+        console.info(`=====Kode : Object Freeze=====`);
+        const person = {
+            firstName: "Fauzan",
+            lastName: "Ahmad"
         };
 
-        // Kode : Object Loop
-        console.info(`=====Kode : Object Loop=====`);
-        {
-            for (const value in object) {
-                console.info(object[value].fullname);
-            }
-        }
+        Object.freeze(person);
 
-        // Kode : Array Loop
-        console.info(`=====Kode : Array Loop=====`);
-        {
-            console.info(`## with function`);
-            array.forEach(function (value, index) {
-                console.info(`${index} : ${value}`);
-            });
-            console.info(`## with arrow function`);
-            array.forEach((value, index) => {
-                console.info(`${index} : ${value}`);
-            });
-            console.info("## with arrow function value => console.info(`${index} : ${value}`)And only values without index");
-            array.forEach(value => console.info(`${value}`));
-        }
-        {
-            // Kode : Array Queue
-            console.info(`=====Kode : Array Queue=====`);
-            const queue = [];
-            queue.push("Guest 1");
-            queue.push("Guest 2");
-            queue.push("Guest 3");
-
-
-            console.info(queue.shift());
-            console.info(queue.shift());
-            console.info(queue);
-            console.info(queue.shift());
-        }
-
-        {
-            // Kode : Array Stack
-            console.info(`=====Kode : Array Stack=====`);
-            const stack = [];
-            stack.push("Fauzan");
-            stack.push("Ahmad");
-            stack.push("Manggero");
-
-            console.info(stack.pop());
-            console.info(stack.pop());
-            console.info(stack.pop());
-        }
-        {
-            // Kode : Array Search
-            console.info(`=====Kode : Array Search=====`);
-            const source = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5];
-
-            console.info(source.find(value => value > 3)); // 4
-            console.info(source.findIndex(value => value > 3)); // 3 Gak paham
-            console.info(source.includes(6)); // false
-            console.info(source.indexOf(3)); // 2
-            console.info(source.lastIndexOf(4)); // 8
-        }
-        {
-            // Kode : Array Transform
-            console.info(`=====Kode : Array Transform=====`);
-            const names = "Fauzan Ahmad Margondangdia".split(" ");
-            console.info(names.map(value => value.toUpperCase()));
-
-            const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-            console.log(numbers.reduce((result, value) => result + value));
-            console.info(numbers.reduceRight((result, value) => result + value));
-        }
+        person.firstName = "Diubah"; // Tidak Berubah
+        delete person.firstName; // Tidak Berubah
+        console.log(person);
     </script>
 </body>
 
