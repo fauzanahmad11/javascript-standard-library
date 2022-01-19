@@ -26,40 +26,22 @@
 
 
         {
-            // Kode : Object Freeze
-            console.info(`=====Kode : Object Freeze=====`);
+            // Kode : JSON
+            console.info(`=====Kode : JSON=====`);
             const person = {
                 firstName: "Fauzan",
-                lastName: "Ahmad"
+                lastName: "Ahmad",
+                address: {
+                    country: "Indonesia",
+                    city: "Subang"
+                }
             };
 
-            Object.freeze(person);
+            const json = JSON.stringify(person);
+            const personAgain = JSON.parse(json);
 
-            person.firstName = "Diubah"; // Tidak Berubah
-            delete person.firstName; // Tidak Berubah
-            console.log(person);
-        }
-        {
-            // Kode : Object Assign
-            console.info(`=====Kode : Object Assign=====`);
-            const target = { firstName: "Fauzan" };
-            const source = { lastName: "Ahmad" };
-
-            Object.assign(target, source);
-            console.info(target);
-
-        }
-        {
-            // Kode : Object Property Name & Value
-            console.info(`=====Kode : Object Property Name & Value=====`);
-            const person = {
-                firstName: "Fauzan",
-                lastName: "Ahmad"
-            };
-
-            console.infoQ(Object.values(person));
-            console.log(Object.getOwnPropertyNames(person));
-
+            console.log(json);
+            console.log(personAgain);
         }
     </script>
 </body>
