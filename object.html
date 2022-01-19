@@ -25,22 +25,53 @@
         ## Object Assign
         ● Kadang kita ada kasus menggabungkan semua attribute dari sebuah object ke object lain
         ● Hal ini bisa kita lakukan dengan menggunakan Object.assign(target, source)
+
+        ## Object Property Name & Value
+        ● Object juga memiliki static method untuk digunakan mengambil semua properties names dan values
+        ● Object.values() digunakan untuk mengambil semua property value
+        ● Object.getPropertyNames() digunakan untuk mengambil semua properti name
+
+        ## Dan Function Lain-Lain
+        ● https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
         */
 
 
+        {
+            // Kode : Object Freeze
+            console.info(`=====Kode : Object Freeze=====`);
+            const person = {
+                firstName: "Fauzan",
+                lastName: "Ahmad"
+            };
 
-        // Kode : Object Freeze
-        console.info(`=====Kode : Object Freeze=====`);
-        const person = {
-            firstName: "Fauzan",
-            lastName: "Ahmad"
-        };
+            Object.freeze(person);
 
-        Object.freeze(person);
+            person.firstName = "Diubah"; // Tidak Berubah
+            delete person.firstName; // Tidak Berubah
+            console.log(person);
+        }
+        {
+            // Kode : Object Assign
+            console.info(`=====Kode : Object Assign=====`);
+            const target = { firstName: "Fauzan" };
+            const source = { lastName: "Ahmad" };
 
-        person.firstName = "Diubah"; // Tidak Berubah
-        delete person.firstName; // Tidak Berubah
-        console.log(person);
+            Object.assign(target, source);
+            console.info(target);
+
+        }
+        {
+            // Kode : Object Property Name & Value
+            console.info(`=====Kode : Object Property Name & Value=====`);
+            const person = {
+                firstName: "Fauzan",
+                lastName: "Ahmad"
+            };
+
+            console.infoQ(Object.values(person));
+            console.log(Object.getOwnPropertyNames(person));
+
+        }
     </script>
 </body>
 
