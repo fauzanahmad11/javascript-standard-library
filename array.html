@@ -75,17 +75,16 @@
             },
         };
 
-        // Kode : Object Loop
-        console.info(`=====Kode : Object Loop=====`);
         {
+            // Kode : Object Loop
+            console.info(`=====Kode : Object Loop=====`);
             for (const value in object) {
                 console.info(object[value].fullname);
             }
         }
-
-        // Kode : Array Loop
-        console.info(`=====Kode : Array Loop=====`);
         {
+            // Kode : Array Loop
+            console.info(`=====Kode : Array Loop forEach=====`);
             console.info(`## with function`);
             array.forEach(function (value, index) {
                 console.info(`${index} : ${value}`);
@@ -99,22 +98,22 @@
         }
         {
             // Kode : Array Queue
-            console.info(`=====Kode : Array Queue=====`);
+            console.info(`=====Kode : Array Queue/Implementasi Struktur Data Queue=====`);
             const queue = [];
             queue.push("Guest 1");
             queue.push("Guest 2");
             queue.push("Guest 3");
 
 
-            console.info(queue.shift());
-            console.info(queue.shift());
-            console.info(queue);
-            console.info(queue.shift());
+            console.info(`${queue.shift()} - Cabut`);
+            console.info(`${queue.shift()} - Cabut`);
+            console.info(`Sisa ${queue} yang berada salam antrian`);
+            console.info(`${queue.shift()} - Cabut`);
+            console.info(queue.length < 1 ? "Tidak ada orang diantrian" : `Masih ada ${queue.length} orang di antrian`);
         }
-
         {
             // Kode : Array Stack
-            console.info(`=====Kode : Array Stack=====`);
+            console.info(`=====Kode : Array Stack/Implementasi Struktur Data Stack=====`);
             const stack = [];
             stack.push("Fauzan");
             stack.push("Ahmad");
@@ -147,7 +146,14 @@
             // Kode : Array Transform
             console.info(`=====Kode : Array Transform=====`);
             const names = "Fauzan Ahmad Margondangdia".split(" ");
-            console.info(names.map(value => value.toUpperCase()));
+            const namesUpper = names.map(value => value.toUpperCase());
+            console.info(namesUpper);
+
+            const namesReduce = names.reduce((before, value) => before + " " + value);
+            console.log(`Name Reduce : ${namesReduce}`);
+
+            const namesReduceRight = names.reduceRight((before, value) => before + " " + value);
+            console.log(`Name Reduce Right : ${namesReduceRight}`);
 
             const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
             console.log(numbers.reduce((result, value) => result + value));
