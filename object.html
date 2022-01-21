@@ -44,7 +44,8 @@
                 lastName: "Ahmad"
             };
 
-            Object.freeze(person);
+            // Object.freeze(person);
+            Object.seal(person); //bisa diubah namun attribut tidak dapat dihapus
 
             person.firstName = "Diubah"; // Tidak Berubah
             delete person.firstName; // Tidak Berubah
@@ -56,7 +57,7 @@
             const target = { firstName: "Fauzan" };
             const source = { lastName: "Ahmad" };
 
-            Object.assign(target, source);
+            Object.assign(target, source); // kalau ada properti yang sama akan ditimpa dari properti source
             console.info(target);
 
         }
