@@ -34,10 +34,14 @@
                 address: {
                     country: "Indonesia",
                     city: "Subang"
-                }
+                },
+                hobbies: [
+                    "Coding", "Game", "Traveling"
+                ]
             };
 
-            const json = JSON.stringify(person);
+            const json = JSON.stringify(person); // bisa object dan juga bisa array
+            // const json = JSON.stringify([person]); // bisa object dan juga bisa array
             const personAgain = JSON.parse(json);
 
             console.log(json);
