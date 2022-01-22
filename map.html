@@ -38,14 +38,18 @@
         */
 
 
-        {
-            // Kode : Boolean 
-            console.info(`=====Kode : Boolean=====`);
-            const boolean = Boolean(true);
-            console.info(boolean);
-            console.info(boolean.toString());
-            console.info(boolean.valueOf());
+        const map = new Map();
+        map.set("Name", "Fauzan Ahmad");
+        map.set("Address", "Indonesia");
+
+        console.info(map);
+        console.info(map.get("Name"));
+        console.info(map.get("Address"));
+
+        for (const element of map) {
+            console.info(`${element[0]} : ${element[1]}`);
         }
+
 
     </script>
 </body>
