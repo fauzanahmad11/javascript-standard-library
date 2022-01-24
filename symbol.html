@@ -17,17 +17,19 @@
         ● https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol
         */
 
-        console.info("=====Kode : Symbol=====");
-        const firstName = Symbol();
-        const lastName = Symbol();
+        {
+            console.info("=====Kode : Symbol=====");
+            const firstName = Symbol("firstName"); // bisa menggunakan description untuk mempermudah proses ngedebug. Description sebagai berikut Symbol("disini descriptionnya")
+            const lastName = Symbol("lastName");
 
-        const person = {};
-        person[firstName] = "Fauzan";
-        person[lastName] = "Ahmad";
+            const person = {};
+            person[firstName] = "Fauzan";
+            person[lastName] = "Ahmad";
 
-        console.log(person);
-        console.log(person[firstName]);
-        console.log(person[lastName]);
+            console.log(person);
+            console.log(person[firstName]);
+            console.log(person[lastName]);
+        }
 
         /*
         ## Symbol For
@@ -35,14 +37,16 @@
         ● Pembuatan symbol juga bisa menggunakan static method Symbol.for(key)
         ● Jika kita menggunakan key yang sama, Symbol yang sama akan sekalu dikembalikan
         */
-        console.info("=====Kode : Symbol=====");
-        const person = {};
-        person[Symbol.for("firstName")] = "Fauzan";
-        person[Symbol.for("lastName")] = "Ahmad";
+        {
+            console.info("=====Kode : Symbol=====");
+            const person = {};
+            person[Symbol.for("firstName")] = "Fauzan";
+            person[Symbol.for("lastName")] = "Ahmad";
 
-        console.log(person);
-        console.log(person[Symbol.for("firstName")]);
-        console.log(person[Symbol.for("lastName")]);
+            console.log(person);
+            console.log(person[Symbol.for("firstName")]);
+            console.log(person[Symbol.for("lastName")]);
+        }
 
     </script>
 </body>

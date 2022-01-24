@@ -19,9 +19,9 @@
         */
 
         console.info("=====Kode : Membuat RegExp=====");
-        const regex1 = /[a]/;
-        const regex2 = new RegExp("[a]");
-        const regex3 = new RegExp(/[a]/);
+        const regex1 = /[a]/; //cara 1
+        const regex2 = new RegExp("[a]"); //cara 2
+        const regex3 = new RegExp(/[a]/); //cara 3
 
         /*
         ## RegExp Instance Method
@@ -31,21 +31,22 @@
         */
         {
             console.info("=====Kode : RegExp Instance Method=====");
-            const name = "Fauzan Ahmad Fauzan Anjay";
-            const regex = /fauzan/;
+            const name = "fauzan ahmad fauzan anjay";
+            const regex = /ahmad/;
 
             let result = regex.exec(name);
             console.log(result);
 
             let test = regex.test(name);
             console.log(test);
+            console.log(regex.test("cari data yang tidak ada dalam pola seperti yg ada pada pola variable regex"));
         }
 
         /*
         ## RegExp Modifier
         RegExp memiliki modifier untuk mengubah sifat cara pencarian 
         * Modifier  || Keterangan
-        • i         || Regex menjadi incase sensitive
+        • i         || Regex menjadi incase sensitive (defaultnya sensitive) membuatf  tidak peduli besar kecilnya
         • g         || Pencarian dilakukan secara global, secara default setelah menemukan data, pencarian akan berhenti
         • m         || Multiline, pencarian dilakukan di tiap baris (enter)
         */
@@ -53,7 +54,7 @@
             console.info("=====Kode : RegExp Modifier=====");
             const name = "fauzan ahmad\nfAuzan Ahmad\nFauzi Antum";
             const regex1 = /fauzan/g;
-            const regex2 = /Ahmad/ig;
+            const regex2 = new RegExp(/Ahmad/, "ig"); // /Ahmad/ig
 
             let result;
             while ((result = regex1.exec(name)) !== null) {
@@ -61,6 +62,16 @@
             }
 
             while ((result = regex2.exec(name)) !== null) {
+                console.log(result);
+            }
+        }
+        {
+            console.info("=====Kode : RegExp Modifier (Multiline)=====");
+            const name = "fauzan ahmad\nfAuzan Ahmad\nFauzi Antum";
+            const regex1 = /^fauzan/igm;
+
+            let result;
+            while ((result = regex1.exec(name)) !== null) {
                 console.log(result);
             }
         }
@@ -78,8 +89,9 @@
         */
         {
             console.info("=====Kode : Contoh Fitur RegExp=====");
-            const regex = /faza[aiueo]/ig;
-            const text = "fauzan ado eki eka ejo faujan fauzi";
+            const regex = /fauza[aiueo]/ig;
+            const text = "fauzaa fauzai fauzau fauzae fauzao";
+
 
             while ((result = regex.exec(text)) !== null) {
                 console.log(result);
@@ -99,13 +111,13 @@
         */
         {
             console.info("=====Kode : Regular Expression di String=====");
-            const string = "fauzan fauzi faujan faujo fauje fafal";
+            const string = "fauzaa fauzai fauzau fauzae fauleng fauzao";
 
-            console.log(string.match(/fa[aiueo]/ig)); // []
-            console.log(string.search(/fa[aiueo]/ig)); // 0
+            console.log(string.match(/fauza[aiueo]/ig)); // []
+            console.log(string.search(/fauza[aiueo]/ig)); // 0
             // di replace semua karena
-            console.log(string.replace(/fa[aiueo]/ig, "awesome")); // 
-            console.log(string.replaceAll(/fa[aiueo]/ig, "awesome")); // 
+            console.log(string.replace(/fauza[aiueo]/i, "awesome")); // 
+            console.log(string.replaceAll(/fauza[aiueo]/ig, "awesome")); // 
             console.log(string.split(/a/ig));
         }
     </script>
