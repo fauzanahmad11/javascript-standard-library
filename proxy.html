@@ -21,39 +21,59 @@
         ● Pembuatan Proxy perlu menggunakan handler, dimana dalam handler, kita bisa membuat function yang dinamakan interceptor yang digunakan ketika mengambil data atau mengubah data ke target
         ● Untuk membuat Proxy, kita bisa menggunakan new Proxy(target, handler)
         */
+        {
+            console.log("=====Kode : Membuat Handler=====");
+            const target = {
+                middleName: "Jengker"
+            };
+            const handler = {
+                get: function (target, property) {
+                    console.log(`Access property ${property}`);
+                    return target[property];
+                },
+                set: function (target, property, value) {
+                    console.log(`Change property ${property} : ${value}`);
+                    if (value === null) {
+                        alert("value ga boleh kosong");
+                        throw new Error("Value tidak boleh kosong yah");
+                        target[property] = "";
+                    } else {
+                        target[property] = value;
+                    }
+                }
+            };
+            console.log("=====Kode : Membuat Proxy=====");
+            const proxy = new Proxy(target, handler);
+            proxy.firstName = "Fauzan";
+            proxy.lastName = null;
 
-        console.log("=====Kode : Membuat Handler=====");
-        const target = {};
-        const handler = {
-            get: function (target, property) {
-                return target[property];
-            },
-            set: function (target, property, value) {
-                target[property] = value;
-            }
-        };
-
-        console.log("=====Kode : Membuat Proxy=====");
-        const proxy = new Proxy(target, handler);
-        proxy.firstName = "Fauzan";
-        proxy.lastName = "Ahmad";
-
-        console.log(proxy.firstName);
-        console.log(proxy.lastName);
-
+            console.log(proxy.firstName);
+            console.log(proxy.middleName);
+            console.log(proxy.lastName);
+            console.log(proxy);
+        }
         /*
         ## Proxy dan Handler
         ● Saat kita mengubah data proxy, secara otomatis data akan dikirim ke target melalui handler dengan memanggil function set(target, property, value)
         ● Saat kita mengambil data proxy, secara otomatis data akan diambil dari target melalui handler dengan memanggil function get(target, property)
         ● Artinya, jika kita ingin melakukan sesuatu sebelum dan setelah nya, bisa kita lakukan di handler
         */
+        // =====Kode : Membuat Log Handler===== 
+        // const handler = {
+        //     get: function (target, property) {
+        //         console.log(`Access property ${property}`);
+        //         return target[property];
+        //     },
+        //     set: function (target, property, value) {
+        //         console.log(`Change property ${property} : ${value}`);
+        //         target[property] = value;
+        //     }
+        // };
         const handler = {
             get: function (target, property) {
-                console.log(`Access property ${property}`);
                 return target[property];
             },
             set: function (target, property, value) {
-                console.log(`Change property ${property} : ${value}`);
                 target[property] = value;
             }
         };
